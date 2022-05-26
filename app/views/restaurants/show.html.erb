@@ -1,18 +1,22 @@
-<h1><%= @restaurant.name %></h1>
-<p><%= @restaurant.category %></p>
+<%# <div class="d-flex flex-column justify-content-start"> %>
+<h1><strong><%= @restaurant.name %></strong></h1>
+<%# </div> %>
+<h4><strong><em><%= @restaurant.category %></em></strong></h4>
 <p><%= @restaurant.phone_number %></p>
 <p><%= @restaurant.address %></p><br>
 
-<%= link_to "Review Restaurant", new_restaurant_review_path(@restaurant) %><br>
+<%= simple_form_for ([@restaurant, @review]) do |f| %>
+  <%= f.input :rating, collection: [1, 2, 3, 4, 5] %>
+  <%= f.input :content %>
+  <%= f.submit "Post Review", class: "btn btn-primary" %>
+<% end %>
 
-<%= link_to "back to restaurants", restaurants_path %>
-
-<ul>
+<h3>Reviews of the Restaurant</h3>
+<ul class="list-group">
   <% @restaurant.reviews.each do |review| %>
+    <li class="list-group-item">
+      <%= review.rating %>
+      <%= review.content %>
     </li>
-      <p><%= review.rating %></p>
-      <p><%= review.content %></p>
-
-    <li>
   <% end %>
 </ul>

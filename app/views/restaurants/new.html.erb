@@ -2,6 +2,6 @@
   <%= f.input :name %>
   <%= f.input :address %>
   <%= f.input :phone_number %>
-  <%= f.input :category, collection: %w[chinese italian japanese french belgian] %>
+  <%= f.input :category, collection: Restaurant::CATEGORY_TYPES %>
   <%= f.submit "List Restaurant", class: "btn btn-primary" %>
 <% end %>

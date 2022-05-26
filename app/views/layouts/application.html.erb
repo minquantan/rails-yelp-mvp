@@ -11,6 +11,12 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container col-6 mx-auto">
+      <div class="navbar">
+        <h1><%= link_to "Yelp!", restaurants_path %></h1>
+        <%= link_to "Post!", new_restaurant_path, class: "btn btn-inverse" %>
+      </div>
+      <%= yield %>
+    </div>
   </body>
 </html>
